@@ -137,9 +137,39 @@
   transition: background 0.3s ease, transform 0.2s ease;
   z-index: 1000;
 }
+.btn-flutuante2 {
+  position: fixed;
+  bottom: 20px;  /* distância do fundo */
+  right: 70px;   /* distância da lateral direita */
+  background-color: #0e8fdf;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
 .btn-flutuante:hover {
   background-color: #098025;
   transform: scale(1.1);
+}
+.btn-flutuante2:hover {
+  background-color: #115e6a;
+  transform: scale(1.1);
+}
+.high-contrast {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.high-contrast a {
+  color: #00ffff !important; /* links mais visíveis */
 }
   </style>
 </head>
@@ -191,6 +221,8 @@ Já pensou em ter todos os seus livros favoritos em um só lugar?
 <a href="https://wa.me/62985600882?text=Olá,preciso%20de%20ajuda%21" class="btn-flutuante" target="_blank">
   <i class="fab fa-whatsapp fa-1.5x"></i>
 </a>
+<a class="btn-flutuante2" id="btn-flutuante2" target="_blank">
+  <i class="fas fa-eye"></i>
   <script>
     const slides = document.querySelector('.slides');
     const slide = document.querySelectorAll('.slide');
@@ -208,6 +240,13 @@ Já pensou em ter todos os seus livros favoritos em um só lugar?
 
     // Auto play (opcional)
     setInterval(() => showSlide(1), 5000);
+    const btn = document.getElementById('btn-flutuante2');
+
+btn.addEventListener('click', () => {
+  document.body.classList.toggle('high-contrast');
+});
+
   </script>
 </body>
 </html>
+
