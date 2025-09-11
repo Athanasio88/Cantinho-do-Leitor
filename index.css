@@ -418,3 +418,70 @@ h1 {
 #cursor-highlight.visivel {
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 9rem;
+  }
+  header {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .main-nav-buttons {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding: 0 1rem;
+  }
+
+  #navInicio, #navSobre, #navCatalogo, #leitorTelaBtn {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .toggle-container {
+    top: 15px;
+    right: 15px;
+    gap: 8px;
+  }
+
+  .slider-container {
+    margin-top: 1rem;
+  }
+  
+  .slide img {
+    height: 250px;
+  }
+
+  .topicos, .conteudo-secao {
+    padding: 1.5rem 1rem;
+    margin: 2rem auto;
+  }
+
+  .conteudo-secao h2, .cartao h2 {
+    font-size: 1.5rem;
+  }
+
+  .conteudo-secao p, .cartao p {
+    font-size: 1rem;
+  }
+
+  .btn-flutuante {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  #btn-flutuante2 {
+    right: 65px;
+  }
+}
