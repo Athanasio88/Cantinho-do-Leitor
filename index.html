@@ -1,531 +1,201 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cantinho do Leitor - Facilidade em leitura!</title>
+  <link rel="stylesheet" href="index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: var(--dark-color);
-      color: var(--light-color);
-      overflow-x: hidden;
-      padding-top: 6rem; 
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: var(--primary-color);
-      color: var(--dark-color);
-      text-align: center;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(221, 221, 221, 0.1);
-      backdrop-filter: none !important;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: rgb(245, 243, 243);
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      opacity: 1;
-    }
-    /* Os cartao flutuante embaixo */
-     .topics {
-            position: relative;
-            z-index: 5;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
- .topic-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-/* tudo do slide */
-    .slider-container {
-      position: relative;
-      max-width: 800px;
-      margin: 4rem auto;
-      overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 100%;
-    }
-
-    .slide {
-      min-width: 100%;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 450px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 7px;
-    }
-
-    .prev { left: 10px; }
-    .next { right: 10px; }
-
-    .prev, .next {
-  border: none;
-  outline: none;
-  transform: none !important;
-}
-.prev:hover, .next:hover {
-  background: rgba(0,0,0,0.8);
-  color: #fff;
-  border: none;
-  outline: none;
-  transform: none !important;
-  margin: 0 !important;
-  padding: 0.5rem 1rem !important;
-}
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      .subtitle { font-size: 1rem; }
-      .slide img { height: 250px; }
-    }
-    /* viadagem dos botao */
-    .btn-flutuante {
-  position: fixed;
-  bottom: 20px;  
-  right: 20px;   
-  background-color: #00ff2a;
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: background 0.3s ease, transform 0.2s ease;
-  z-index: 1000;
-}
-.btn-flutuante2 {
-  position: fixed;
-  bottom: 20px;  
-  right: 70px;   
-  background-color: #0e8fdf;
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: background 0.3s ease, transform 0.2s ease;
-  z-index: 1000;
-}
-/* uatizpi */
-.btn-flutuante:hover {
-  background-color: #098025;
-  transform: scale(1.1);
-}
-/* Botao do modo alto contraste */
-.btn-flutuante2:hover {
-  background-color: #115e6a;
-  transform: scale(1.1);
-}
-/* Botao do modo escurao */
-.high-contrast {
-  background-color: #000000 !important;
-  color: #ffff00 !important;
-}
-
-.high-contrast a {
-  color: #00ffff !important; 
-}
-.high-contrast, .high-contrast body, .high-contrast header, .high-contrast .topic-card, .high-contrast button, .high-contrast select, .high-contrast .slider-container, .high-contrast .prev, .high-contrast .next {
-  background-color: #000000 !important;
-  color: #ffff00 !important;
-  border-color: #ffff00 !important;
-}
-.high-contrast a, .high-contrast a:visited {
-  color: #00ffff !important;
-}
-.high-contrast .fas, .high-contrast .fab {
-  color: #ffff00 !important;
-}
-/* Daltonismos */
-    .protanopia {
-      --primary-color: #0057b7;
-      --secondary-color: #ffd700;
-      --dark-color: #333;
-      --light-color: #fff;
-      --accent-color: #0057b7;
-    }
-    .deuteranopia {
-      --primary-color: #0072b2;
-      --secondary-color: #f0e442;
-      --dark-color: #444;
-      --light-color: #fff;
-      --accent-color: #0072b2;
-    }
-    .tritanopia {
-      --primary-color: #d55e00;
-      --secondary-color: #009e73;
-      --dark-color: #222;
-      --light-color: #fff;
-      --accent-color: #d55e00;
-    }
-    .acromatico {
-      --primary-color: #cccccc;
-      --secondary-color: #eeeeee;
-      --dark-color: #222222;
-      --light-color: #ffffff;
-      --accent-color: #cccccc;
-    }
-    .headers{
-      position: fixed;
-      top: 1rem;
-      left: 10rem;
-      z-index: 1001;
-      padding: 0.7rem 1.2rem;
-      border-radius: 8px;
-      background: #141414;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-     :root {
-      --primary-color: hwb(0 0% 100%);
-      --secondary-color: #f5f5f5;
-      --dark-color: #7e7d7d;
-      --light-color: #ffffff;
-      --accent-color: #ffffff;
-    }
-    .protanopia {
-      --primary-color: #1976d2;
-      --secondary-color: #ffd600;
-      --dark-color: #424242;
-      --light-color: #fffde7;
-      --accent-color: #1976d2;
-    }
-    .deuteranopia {
-      --primary-color: #1565c0;
-      --secondary-color: #f48fb1;
-      --dark-color: #616161;
-      --light-color: #fce4ec;
-      --accent-color: #1565c0;
-    }
-    .tritanopia {
-      --primary-color: #d32f2f;
-      --secondary-color: #388e3c;
-      --dark-color: #212121;
-      --light-color: #e8f5e9;
-      --accent-color: #d32f2f;
-    }
-    .acromatico {
-      --primary-color: #cccccc;
-      --secondary-color: #eeeeee;
-      --dark-color: #222222;
-      --light-color: #ffffff;
-      --accent-color: #cccccc;
-    }
-    /* Nao enconstar(Jurado de morte) */
-    button:hover, #leitorTelaBtn:hover, #Catalogo:hover {
-  background: #ffffff;
-  color: #000000;
-  transform: scale(1.05);
-}
-/* Botao do modo escurao */
-.theme-switcher {
-  position: fixed;
-  top: 1rem;
-  right: 2rem;
-  z-index: 2000;
-}
-.theme-btn {
-  background: #474747;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.theme-btn:hover {
-  background: #cccbcf;
-  color: #222;
-  transform: none !important;
-}
-.theme-dropdown {
-  display: none;
-  position: absolute;
-  top: 2.5rem;
-  right: 0;
-  background: #222;
-  color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  min-width: 140px;
-  padding: 0.5rem 0;
-}
-.theme-dropdown.active {
-  display: block;
-}
-.theme-option {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.theme-option.selected {
-  background: #9e9d9e;
-  color: #fff;
-}
-.theme-option:hover {
-  background: #757575;
-}
-.theme-icon {
-  font-size: 1.2rem;
-}
-.light-theme {
-  background: #f5f5f5 !important;
-  color: #222 !important;
-}
-.dark-theme {
-  background: #222 !important;
-  color: #fff !important;
-}
-.protanopia, .protanopia body, .protanopia header, .protanopia .topic-card, .protanopia button, .protanopia select, .protanopia .slider-container, .protanopia .prev, .protanopia .next {
-  background-color: var(--primary-color) !important;
-  color: var(--light-color) !important;
-}
-.deuteranopia, .deuteranopia body, .deuteranopia header, .deuteranopia .topic-card, .deuteranopia button, .deuteranopia select, .deuteranopia .slider-container, .deuteranopia .prev, .deuteranopia .next {
-  background-color: var(--primary-color) !important;
-  color: var(--light-color) !important;
-}
-.tritanopia, .tritanopia body, .tritanopia header, .tritanopia .topic-card, .tritanopia button, .tritanopia select, .tritanopia .slider-container, .tritanopia .prev, .tritanopia .next {
-  background-color: var(--primary-color) !important;
-  color: var(--light-color) !important;
-}
-.acromatico, .acromatico body, .acromatico header, .acromatico .topic-card, .acromatico button, .acromatico select, .acromatico .slider-container, .acromatico .prev, .acromatico .next {
-  background-color: var(--primary-color) !important;
-  color: var(--light-color) !important;
-}
-  </style>
+  <title>Cantinho do Leitor - Facilidade em leitura!</title>
 </head>
+
 <body>
   <header>
-   <!--modo escuro-->
-  <div class="theme-switcher">
-  <button class="theme-btn" id="themeBtn">
-    <span class="theme-icon">&#9681;</span>
-    Tema
-    <span style="margin-left:0.3rem;">&#9660;</span>
-  </button>
-  <div class="theme-dropdown" id="themeDropdown">
-    <div class="theme-option" data-theme="light"><span class="theme-icon">&#9728;</span> Light</div>
-    <div class="theme-option" data-theme="dark"><span class="theme-icon">&#9790;</span> Dark</div>
-    <div class="theme-option" data-theme="auto"><span class="theme-icon">&#9681;</span> Auto</div>
-  </div>
-</div>
-<script>
-const themeBtn = document.getElementById('themeBtn');
-const themeDropdown = document.getElementById('themeDropdown');
-const themeOptions = document.querySelectorAll('.theme-option');
-let currentTheme = 'auto';
-function applyTheme(theme) {
-  document.body.classList.remove('light-theme', 'dark-theme');
-  if (theme === 'light') document.body.classList.add('light-theme');
-  else if (theme === 'dark') document.body.classList.add('dark-theme');
-  else if (theme === 'auto') {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.add('light-theme');
-    }
-  }
-}
-themeBtn.addEventListener('click', () => {
-  themeDropdown.classList.toggle('active');
-});
-themeOptions.forEach(opt => {
-  opt.addEventListener('click', () => {
-    themeOptions.forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-    currentTheme = opt.getAttribute('data-theme');
-    applyTheme(currentTheme);
-    themeDropdown.classList.remove('active');
-  });
-});
-applyTheme(currentTheme);
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-  if (currentTheme === 'auto') applyTheme('auto');
-});
-</script>
+    <div class="toggle-container">
+        <span class="toggle-text">Modo Escuro</span>
+        <input type="checkbox" id="fotossensibilidade-toggle" class="toggle-switch">
+        <label for="fotossensibilidade-toggle" class="toggle-label"></label>
+    </div>
+
     <h1>Cantinho do Leitor</h1>
-<button id="leitorTelaBtn" style="position:fixed;top:1rem;left:1rem;z-index:1001;padding:0.7rem 1.2rem;border-radius:8px;border:none;cursor:pointer;font-size:1rem;">Ativar leitura</button>
-<button id="Inicio" class="headers">Inicio</button>
-<button id="Catalogo" class="headers" style="position: fixed;top: 1rem;left: 16rem;z-index: 1001;padding: 0.7rem 1.2rem;border-radius: 8px;border: none;cursor: pointer;font-size: 1rem;" class="headers">Catalogo</button>
-    <div style="margin-top: 1rem;">
-      <label for="daltonismo-select" style="font-weight:bold;">Modo Daltonismo:</label>
-      <select id="daltonismo-select" style="padding:0.3rem; border-radius:5px;">
-        <option value="padrao">Padrão</option>
-        <option value="protanopia">Protanopia</option>
-        <option value="deuteranopia">Deuteranopia</option>
-        <option value="tritanopia">Tritanopia</option>
-        <option value="acromatico">Acromático</option>
-      </select>
+    
+    <div class="main-nav-buttons">
+      <button id="leitorTelaBtn">Ativar leitura</button>
+      <button id="navInicio">Inicio</button>
+      <button id="navSobre">Sobre</button>
+      <button id="navCatalogo">Catálogo</button>
     </div>
   </header>
-     <div vw class="enabled">
-       <div vw-access-button class="active"></div>
-       <div vw-plugin-wrapper>
-         <div class="vw-plugin-top-wrapper"></div> 
-       </div>
-     </div>
-     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-     <script>
-       new window.VLibras.Widget('https://vlibras.gov.br/app');
-     </script>
   
-  <div class="slider-container">
-    <div class="slides">
-      <div class="slide"><img src="livro1.jpeg" alt="Livro 1"></div>
-      <div class="slide"><img src="../livro2.jpeg" alt="Livro 2"></div>
-      <div class="slide"><img src="../livro3.jpeg" alt="Livro 3"></div>
-      <div class="slide"><img src="../livro4.jpeg" alt="Livro 4"></div>
-      <div class="slide"><img src="../livro5.jpeg" alt="Livro 5"></div>
-      <div class="slide"><img src="../livro6.jpeg" alt="Livro 6"></div>
-      <div class="slide"><img src="../livro7.jpeg" alt="Livro 7"></div>
-      <div class="slide"><img src="../livro8.jpeg" alt="Livro 8"></div>
+  <main>
+    <div class="slider-container">
+      <div class="slides">
+        <div class="slide"><img src="..livro1.jpeg" alt="Livro 1"></div>
+        <div class="slide"><img src="..livro2.jpeg" alt="Livro 2"></div>
+        <div class="slide"><img src="..livro3.jpeg" alt="Livro 3"></div>
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
     </div>
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-  </div>
-  <section class="topics">
-  <div class="topic-card">
-            <h2><i class="fas fa-book"></i>Por que o Cantinho do Leitor?</h2>
-Já pensou em ter todos os seus livros favoritos em um só lugar?
-        </div>
-        <div class="topic-card">
-            <h2><i class="fas fa-book"></i>Por que o Cantinho do Leitor?</h2>
-Já pensou em ter todos os seus livros favoritos em um só lugar?
-        </div>
-        <div class="topic-card">
-            <h2><i class="fas fa-book"></i>Por que o Cantinho do Leitor?</h2>
-Já pensou em ter todos os seus livros favoritos em um só lugar?
-        </div>
- </section>
-<footer>
-    <p style="text-align: center; padding: 1rem; font-size: 0.9rem; color: var(--light-color); opacity: 0.7;">
-        &copy; 2025 Cantinho do Leitor. Todos os direitos reservados.
-    </p>
-</footer>
-<a href="https://wa.me/62985600882?text=Olá,preciso%20de%20ajuda%21" class="btn-flutuante" target="_blank">
-  <i class="fab fa-whatsapp fa-1.5x"></i>
-</a>
-<a class="btn-flutuante2" id="btn-flutuante2" target="_blank"></a>
-  <i class="fas fa-eye"></i>
-  <!-- FAVELA -->
+    <div>
+    <section class="topicos">
+      <div class="cartao">
+        <h2><i class="fas fa-book"></i> Por que o Cantinho do Leitor?</h2>
+        <p>Já pensou em ter todos os seus livros favoritos em um só lugar?</p>
+      </div>
+      <div class="cartao">
+        <h2><i class="fas fa-heart"></i> Apoiamos escritores iniciantes!</h2>
+        <p>Providenciamos apoio técnico e financeiro para novos autores.</p>
+      </div>
+      <div class="cartao">
+        <h2><i class="fas fa-hammer"></i> Novidades</h2>
+        <p>Fique por dentro das últimas atualizações e lançamentos!</p>
+      </div>
+      </section>
+
+    <section id="sobre" class="conteudo-secao">
+      <div>
+      <h2>Sobre o Cantinho do Leitor</h2>
+      <p>Este é um espaço dedicado a todos os amantes da leitura, um lugar para descobrir novas histórias e autores talentosos.</p>
+      </div>
+    </section>
+
+    <section id="catalogo" class="conteudo-secao">
+      <div>
+      <h2>Nosso Catálogo</h2>
+      <p>Explore nossa coleção de livros. Em breve, você encontrará aqui uma lista completa de obras disponíveis, separadas por gênero, autor e popularidade.</p>
+      </section>
+    </div>
+  </main>
+  
+  <footer>
+    <a href="https://wa.me/62985600882?text=Olá,preciso%20de%20ajuda%21" class="btn-flutuante" id="btn-whatsapp" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a class="btn-flutuante" id="btn-flutuante2">
+      <i class="fas fa-eye"></i>
+    </a>
+    <p class="footer">&copy; 2025 Cantinho do Leitor. Todos os direitos reservados.</p>
+  </footer>
+
+
   <script>
+    // Slide
     const slides = document.querySelector('.slides');
     const slide = document.querySelectorAll('.slide');
     let index = 0;
-
+    
     function showSlide(i) {
       index += i;
       if (index < 0) index = slide.length - 1;
       if (index >= slide.length) index = 0;
       slides.style.transform = `translateX(${-index * 100}%)`;
     }
-
+    
     document.querySelector('.prev').addEventListener('click', () => showSlide(-1));
     document.querySelector('.next').addEventListener('click', () => showSlide(1));
-
-    setInterval(() => showSlide(1), 5000);
-    const btn = document.getElementById('btn-flutuante2');
-
-btn.addEventListener('click', () => {
-  document.body.classList.toggle('high-contrast');
-});
-document.getElementById('daltonismo-select').addEventListener('change', function() {
-      document.body.classList.remove('protanopia', 'deuteranopia', 'tritanopia', 'acromatico');
-      if (this.value !== 'padrao') {
-        document.body.classList.add(this.value);
-      }
-    });
-  </script>
-  <script>
-    let synth = window.speechSynthesis;
-    let leituraAtiva = false;
-    function lerTexto(texto) {
-      if (synth.speaking) synth.cancel();
-      const utter = new SpeechSynthesisUtterance(texto);
-      utter.lang = 'pt-BR';
-      synth.speak(utter);
-    }
-    const btnLeitor = document.getElementById('leitorTelaBtn');
-    btnLeitor.addEventListener('click', function() {
-      if (!leituraAtiva) {
-        lerTexto(document.body.innerText);
-        btnLeitor.textContent = 'Desativar leitura';
-        leituraAtiva = true;
-      } else {
-        synth.cancel();
-        btnLeitor.textContent = 'Ativar leitura';
-        leituraAtiva = false;
-      }
-    })
-    </script>
-    </body>       
     
+    setInterval(() => {
+        const isFotosensibilidadeActive = document.getElementById('fotossensibilidade-toggle').checked;
+        if (!isFotosensibilidadeActive) {
+            showSlide(1);
+        }
+    }, 5000);
+
+    // Modo fotossensivel
+    const toggle = document.getElementById('fotossensibilidade-toggle');
+    toggle.addEventListener('change', function() {
+        document.body.classList.toggle('fotossensibilidade', this.checked);
+    });
+
+    // Alto contraste
+    const btnContraste = document.getElementById('btn-flutuante2');
+    btnContraste.addEventListener('click', function() {
+        document.body.classList.toggle('high-contrast');
+    });
+// Leitor de tela junto com o highlight no mouse
+const cursorHighlight = document.createElement('div');
+cursorHighlight.id = 'cursor-highlight';
+document.body.appendChild(cursorHighlight);
+window.addEventListener('mousemove', function(e) {
+    if (leituraAtiva) {
+        cursorHighlight.style.left = e.clientX + 'px';
+        cursorHighlight.style.top = e.clientY + 'px';
+    }
+});
+let synth = window.speechSynthesis;
+let leituraAtiva = false;
+let ultimoElementoLido = null;
+
+function lerTexto(texto) {
+    if (synth.speaking) {
+        synth.cancel();
+    }
+    if (texto && texto.trim().length > 2) {
+        const utter = new SpeechSynthesisUtterance(texto);
+        utter.lang = 'pt-BR';
+        synth.speak(utter);
+    }
+}
+const btnLeitor = document.getElementById('leitorTelaBtn');
+btnLeitor.addEventListener('click', function() {
+    leituraAtiva = !leituraAtiva;
+    this.textContent = leituraAtiva ? 'Desativar leitura' : 'Ativar leitura';
+    
+    
+    if (leituraAtiva) {
+        cursorHighlight.classList.add('visivel');
+    } else {
+        cursorHighlight.classList.remove('visivel');
+        synth.cancel();
+        ultimoElementoLido = null;
+    }
+});
+document.body.addEventListener('mouseover', function(e) {
+    if (leituraAtiva) {
+        const target = e.target;
+        if (target !== document.body && target !== ultimoElementoLido) {
+            const tagName = target.tagName;
+            if (['P', 'H1', 'H2', 'BUTTON', 'A', 'IMG'].includes(tagName)) {
+                const textoParaLer = target.innerText || target.alt || '';
+                if (textoParaLer.trim() !== '' && textoParaLer.trim().length > 2) {
+                    ultimoElementoLido = target;
+                    lerTexto(textoParaLer);
+                }
+            }
+        }
+    }
+});
+  </script>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div> 
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+<script>
+document.getElementById('navInicio').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+document.getElementById('navSobre').addEventListener('click', function() {
+    document.getElementById('sobre').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+
+document.getElementById('navCatalogo').addEventListener('click', function() {
+    document.getElementById('catalogo').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+</script>
+</body>
+</html>

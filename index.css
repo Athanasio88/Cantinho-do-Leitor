@@ -1,0 +1,420 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Modo normal(claro) */
+body {
+  background-color: #f5f5f5;
+  color: #333333;
+  overflow-x: hidden;
+  padding-top: 10rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+  color: #333333;
+  text-align: center;
+  padding: 3rem;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  backdrop-filter: none !important;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #161616, #4b4b4b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.main-nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  position: absolute;
+  top: 7.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+}
+
+#navInicio, #navSobre, #navCatalogo, #leitorTelaBtn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  background: #e0e0e0;
+  color: #333333;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+#navInicio:hover, #navSobre:hover, #navCatalogo:hover, #leitorTelaBtn:hover {
+  background: #cccccc;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.topicos {
+  position: relative;
+  z-index: 5;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cartao {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.cartao h2 {
+  color: #333;
+}
+
+.cartao p {
+  color: #666;
+}
+
+/* Botoes flutuantes */
+.btn-flutuante {
+  position: fixed;
+  bottom: 20px;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.btn-flutuante:hover {
+  transform: scale(1.1);
+}
+
+#btn-whatsapp {
+  right: 20px;
+  background-color: #25D366;
+}
+#btn-whatsapp:hover {
+  background-color: #1DA851;
+}
+
+#btn-flutuante2 {
+  right: 70px;
+  background-color: #0e8fdf;
+}
+#btn-flutuante2:hover {
+  background-color: #0b70ae;
+}
+
+/* Slide */
+.slider-container {
+  position: relative;
+  max-width: 800px;
+  margin: 5rem auto;
+  margin-top: 5rem;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(200, 200, 200, 0.7);
+  color: #000000;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 7px;
+  z-index: 10;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.conteudo-secao {
+  max-width: 900px;
+  margin: 4rem auto; 
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover geral */
+.cartao:hover,
+.conteudo-secao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.conteudo-secao h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 1rem;
+}
+
+.conteudo-secao p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Toggle do modo fotossensivel */
+.toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1002;
+}
+
+.toggle-text {
+    color: #333333;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.toggle-switch {
+    display: none;
+}
+
+.toggle-label {
+    width: 45px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 9999px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-label::after {
+    content: '';
+    display: block;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-switch:checked + .toggle-label {
+    background-color: #4c3a7a;
+}
+
+.toggle-switch:checked + .toggle-label::after {
+    transform: translateX(20px);
+}
+
+@media (max-width: 768px) {
+  .slide img { height: 250px; }
+}
+
+/* Modo alto contraste*/
+.high-contrast {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+.high-contrast header,
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast p,
+.high-contrast section#sobre.conteudo-secao,
+.high-contrast section#catalogo.conteudo-secao,
+.high-contrast label.toggle-label,
+.high-contrast label.toggle-label::after,
+.high-contrast span.toggle-text,
+.high-contrast .main-nav-buttons button,
+.high-contrast .topicos,
+.high-contrast .cartao,
+.high-contrast .slider-container,
+.high-contrast .prev,
+.high-contrast .next,
+.high-contrast footer {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+}
+.high-contrast a,
+.high-contrast a:visited {
+  color: #00ffff !important; 
+}
+.high-contrast .fas,
+.high-contrast .fab {
+  color: #ffff00 !important;
+}
+.high-contrast .btn-flutuante2 {
+    background-color: #00ffff !important;
+    color: #000000 !important;
+}
+
+/* Modo fotossensivel */
+.fotossensibilidade {
+  background-color: rgb(24, 23, 23) !important;
+  color: white !important;
+}
+
+.fotossensibilidade header {
+  background: black !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(221, 221, 221, 0.1) !important;
+  border-bottom: none !important;
+}
+
+.fotossensibilidade h1 {
+  background: linear-gradient(90deg #999999) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.fotossensibilidade #navInicio, 
+.fotossensibilidade #navSobre, 
+.fotossensibilidade #navCatalogo,
+.fotossensibilidade #leitorTelaBtn {
+  background: #141414 !important;
+  color: #ffffff !important;
+}
+
+.fotossensibilidade #navInicio:hover, 
+.fotossensibilidade #navSobre:hover, 
+.fotossensibilidade #navCatalogo:hover,
+.fotossensibilidade #leitorTelaBtn:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  transform: scale(1.05) !important;
+}
+
+.fotossensibilidade .cartao {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+}
+
+.fotossensibilidade .cartao h2 {
+  color: white !important;
+}
+
+.fotossensibilidade .cartao p {
+  color: #ccc !important;
+}
+
+.fotossensibilidade .slider-container {
+    box-shadow: 0 0 20px rgba(0,0,0,0.5) !important;
+}
+
+.fotossensibilidade .prev,
+.fotossensibilidade .next {
+    background: rgba(0,0,0,0.5) !important;
+    color: white !important;
+}
+
+.fotossensibilidade .toggle-text {
+    color: white !important;
+}
+
+.fotossensibilidade .toggle-label {
+    background-color: #555 !important;
+}
+
+.fotossensibilidade .conteudo-secao {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+}
+
+.fotossensibilidade .conteudo-secao h2,
+.fotossensibilidade .conteudo-secao p {
+  color: white !important;
+}
+
+.fotossensibilidade .conteudo-secao h2 {
+    border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+}
+/* bolinha no mouse */
+#cursor-highlight {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  border: 2px solid rgba(29, 103, 209, 0.7);
+  background-color: rgba(29, 103, 209, 0.1);
+  box-shadow: 0 0 10px rgba(29, 103, 209, 0.5);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+#cursor-highlight.visivel {
+  opacity: 1;
+}
