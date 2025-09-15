@@ -628,3 +628,60 @@ h1 {
     font-size: 2rem;
   }
 }
+/* Animação de fundo */
+.fundo-animado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.forma {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgb(31, 69, 192), rgba(0, 157, 255, 0.6));
+  filter: blur(100px);
+  opacity: 0.7;
+}
+
+.forma:nth-child(1) {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -150px;
+  animation: mover 25s infinite alternate;
+}
+
+.forma:nth-child(2) {
+  width: 500px;
+  height: 500px;
+  top: 10%;
+  right: -150px;
+  animation: mover 30s infinite alternate;
+  animation-delay: -5s;
+}
+
+.forma:nth-child(3) {
+  width: 350px;
+  height: 350px;
+  bottom: -100px;
+  left: 20%;
+  animation: mover 20s infinite alternate;
+  animation-delay: -10s;
+}
+
+.fotossensibilidade .forma {
+    background: linear-gradient(180deg, rgba(88, 88, 84, 0.7), rgba(107, 107, 104, 0.7));
+}
+
+@keyframes mover {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(300px, 150px) rotate(270deg);
+  }
+}
