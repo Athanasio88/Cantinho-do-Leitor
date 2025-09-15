@@ -114,6 +114,9 @@
       <i class="fas fa-eye"></i>
     </a>
     <p class="footer">&copy; 2025 Cantinho do Leitor. Todos os direitos reservados.</p>
+  <a class="btn-flutuante" id="btn-flutuante3">
+    <i class="fas fa-search"></i>
+  </a>
   </footer>
 
 
@@ -204,6 +207,14 @@ document.body.addEventListener('mouseover', function(e) {
         }
     }
 });
+ const btnAumentarDiminuirFonte = document.getElementById('btn-flutuante3');
+    const rootElement = document.documentElement;
+    const fontSizes = ['100%', '115%', '130%'];
+    let currentSizeIndex = 0;
+    btnAumentarDiminuirFonte.addEventListener('click', function() {
+        currentSizeIndex = (currentSizeIndex + 1) % fontSizes.length;
+        rootElement.style.fontSize = fontSizes[currentSizeIndex];
+    });
   </script>
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
