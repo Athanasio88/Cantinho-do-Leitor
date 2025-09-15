@@ -485,3 +485,146 @@ h1 {
     right: 65px;
   }
 }
+
+
+
+
+.container-planos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.plano-cartao {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plano-cartao:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.plano-cartao h3  {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+
+.plano-cartao .preco {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #000000;
+}
+
+.plano-cartao ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.plano-cartao li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: #000000;
+    text-align: left;
+    position: relative;
+    padding-left: 25px;
+}
+
+.plano-cartao li::before {
+    content: '\2713'; 
+    color: #25D366; 
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.btn-plano {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    background-color: #262e31;
+    color: #ffffff;
+}
+
+.btn-plano:hover {
+    background-color: #000000;
+    transform: translateY(-3px);
+}
+
+.high-contrast .plano-cartao,
+.high-contrast .conteudo-secao {
+    background-color: #000000 !important;
+    border-color: #ffff00 !important;
+    box-shadow: none !important;
+}
+.high-contrast .plano-destaque,
+.high-contrast .btn-plano {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
+}
+
+
+.high-contrast .plano-cartao h3,
+.high-contrast .plano-cartao .preco,
+.high-contrast .plano-cartao li,
+.high-contrast .btn-plano {
+    color: #ffff00 !important; 
+}
+
+.high-contrast .plano-cartao li::before {
+    color: #bbff00 !important;
+}
+
+.high-contrast .btn-plano {
+    background-color: #424242 !important;
+    color: #ffff00 !important;
+}
+
+.fotossensibilidade .plano-cartao {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+.fotossensibilidade .plano-cartao h3,
+.fotossensibilidade .plano-cartao .preco,
+.fotossensibilidade .plano-cartao li,
+.fotossensibilidade .btn-plano  {
+    color: #ffffff !important;
+}
+
+.fotossensibilidade .plano-cartao li::before {
+    color: #25D366 !important;
+}
+
+.fotossensibilidade .btn-plano {
+    background-color: #000000 !important;
+}
+
+@media (max-width: 768px) {
+  .plano-cartao {
+    padding: 1.5rem;
+  }
+  .plano-cartao h3 {
+    font-size: 1.5rem;
+  }
+  .plano-cartao .preco {
+    font-size: 2rem;
+  }
+}

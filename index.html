@@ -30,9 +30,9 @@
   <main>
     <div class="slider-container">
       <div class="slides">
-        <div class="slide"><img src="livro1.jpeg" alt="Livro 1"></div>
-        <div class="slide"><img src="livro2.jpeg" alt="Livro 2"></div>
-        <div class="slide"><img src="livro3.jpeg" alt="Livro 3"></div>
+        <div class="slide"><img src="..livro1.jpeg" alt="Livro 1"></div>
+        <div class="slide"><img src="..livro2.jpeg" alt="Livro 2"></div>
+        <div class="slide"><img src="..livro3.jpeg" alt="Livro 3"></div>
       </div>
       <button class="prev">&#10094;</button>
       <button class="next">&#10095;</button>
@@ -68,6 +68,37 @@
     </div>
   </main>
   
+  <section id="planos-assinatura" class="conteudo-secao">
+    <div>
+      <h2>Escolha Seu Plano de Leitura</h2>
+      <p>Assine um de nossos planos e tenha acesso a um mundo de histórias, com novidades e conteúdos exclusivos todos os meses.</p>
+      <div class="container-planos">
+        <div class="plano-cartao">
+          <h3>Plano Básico</h3>
+          <p class="preco">R$ 19,90/mês</p>
+          <ul>
+            <li>Acesso a mais de 1000 títulos</li>
+            <li>Leitura offline</li>
+            <li>Até 2 dispositivos</li>
+            <a style="color: transparent">---</a>
+          </ul>
+          <button class="btn-plano">Assinar Básico</button>
+        </div>
+        <div class="plano-cartao ">
+          <h3>Plano Premium</h3>
+          <p class="preco">R$ 39,90/mês</p>
+          <ul>
+            <li>Acesso completo a todo o catálogo</li>
+            <li>Lançamentos antecipados</li>
+            <li>Até 5 dispositivos</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          <button class="btn-plano">Assinar Premium</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <a href="https://wa.me/62985600882?text=Olá,preciso%20de%20ajuda%21" class="btn-flutuante" id="btn-whatsapp" target="_blank">
       <i class="fab fa-whatsapp"></i>
@@ -156,7 +187,7 @@ document.body.addEventListener('mouseover', function(e) {
         const target = e.target;
         if (target !== document.body && target !== ultimoElementoLido) {
             const tagName = target.tagName;
-            if (['P', 'H1', 'H2', 'BUTTON', 'A', 'IMG'].includes(tagName)) {
+            if ([,'LI','H3','P', 'H1', 'H2', 'BUTTON', 'A', 'IMG'].includes(tagName)) {
                 const textoParaLer = target.innerText || target.alt || '';
                 if (textoParaLer.trim() !== '' && textoParaLer.trim().length > 2) {
                     ultimoElementoLido = target;
@@ -198,5 +229,4 @@ document.getElementById('navCatalogo').addEventListener('click', function() {
 });
 </script>
 </body>
-
 </html>
