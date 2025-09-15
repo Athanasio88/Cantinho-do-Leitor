@@ -306,7 +306,7 @@ h1 {
 }
 .high-contrast a,
 .high-contrast a:visited {
-  color: #00ffff !important; 
+  color: transparent !important; 
 }
 .high-contrast .fas,
 .high-contrast .fab {
